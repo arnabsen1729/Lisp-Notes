@@ -97,3 +97,36 @@ Example of multi-line comments
 ||#
 
 ```
+
+## Numbers
+
+Fairly simple, any sequence of digits- possibly prefaced with a sign (+ or -), containing a decimal point (.) or a solidus (/), or ending with an exponent marker is read as a number.
+
+[Examples](./numbers.lisp)
+
+## Strings
+
+They are enclosed in double quotes. If we want to escape characters we use the `\` (backslash). But which chars can we escape? The answer is only 2.
+1. Double quotes `"`
+2. Backslash itself `\`
+All other characters can be included in a string literal without escaping, regardless of their meaning outside a string.
+
+
+[Examples](./strings.lisp)
+
+If you execute this script using the command
+
+```bash
+$ sbcl --script strings.lisp
+```
+
+The output will be something like this:
+
+```
+
+"Hello"
+"She replied \"Yes\""
+"This \\ is backslash"
+```
+
+There are additional quotes in the strings. We can get rid of them if we use the `format` command instead of the `print`.
