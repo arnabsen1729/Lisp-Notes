@@ -2,7 +2,7 @@
 
 ## Setup
 
-We can use SBCL which is a high performance Common Lisp compiler. To set up our environment follow these steps based on you environment:
+We can use SBCL which is a high-performance Common Lisp compiler. To set up our environment follow these steps based on your environment:
 
 **Ubuntu/Debian**
 To install SBCL on either, just run:
@@ -37,7 +37,7 @@ It will open the REPL for Lisp
 
 Now just type `(+ 1 2)` and press enter. It should display `3`.
 
-But, working on this REPL would be inefficient so we would rather use out favourite text editor create lisp files ( extension is `*.lisp`) and run them.
+But, working on this REPL would be inefficient so we would rather use our favorite text editor to create lisp files ( extension is `*.lisp`) and run them.
 
 So create a lisp file `test.lisp` and enter this line `(print "Hello World")`. Now in our terminal run this:
 
@@ -57,13 +57,13 @@ This should display `Hello World` and now we are good to go.
 
 ## Understanding (+ 1 2)
 
-Anything in parentheses is a list, in this case a list of three elements, the symbol +, and the numbers 1 and 2. Lisp, in general, evaluates lists by treating the first element as the name of a function and the rest of the elements as expressions to be evaluated to yield the arguments to the function. In this case, the symbol + names a function that performs addition. 1 and 2 evaluate to themselves and are then passed to the addition function, which returns 3. The value 3 is passed to the printer, which prints it.
+Anything in parentheses is a list, in this case, a list of three elements, the symbol +, and the numbers 1 and 2. Lisp, in general, evaluates lists by treating the first element as the name of a function and the rest of the elements as expressions to be evaluated to yield the arguments to the function. In this case, the symbol + names a function that performs addition. 1 and 2 evaluate to themselves and are then passed to the addition function, which returns 3. The value 3 is passed to the printer, which prints it.
 
 Hence we get 3 as output.
 
 ## Why so weird?
 
-The first things anyone from C++, Java, Python bg will notice is that why are there **so many parentheses**, and why like whyyyyyyy? **prefix notation**.
+The few things anyone from C++, Java, Python background will notice is that why are there **so many parentheses**, and why like whyyyyyyy? **prefix notation**.
 
 ![img](https://media.giphy.com/media/Kg2tFStNdUsOmxv2GC/giphy.gif)
 
@@ -71,7 +71,7 @@ The first things anyone from C++, Java, Python bg will notice is that why are th
 
 ## Basic Syntax
 
-Now in Lisp, whatever is deliminated by parantheses and has space separated values is called a **list**.
+Now in Lisp, whatever is deliminated by parentheses and has space-separated values is called a **list**.
 
 Then we have **forms**. A **form** is a list with a command function name at the beginning, like for example
 `(+ 1 2)` is a form because it has `+` which is command/function name and `1` and `2` are just params to be passed and hence the output will be `3`.
@@ -102,17 +102,17 @@ Example of multi-line comments
 
 Fairly simple, any sequence of digits- possibly prefaced with a sign (+ or -), containing a decimal point (.) or a solidus (/), or ending with an exponent marker is read as a number.
 
-[Examples](./numbers.lisp)
+[Numbers examples](./numbers.lisp)
 
 ## Strings
 
-They are enclosed in double quotes. If we want to escape characters we use the `\` (backslash). But which chars can we escape? The answer is only 2.
+They are enclosed in double-quotes. If we want to escape characters we use the `\` (backslash). But which chars can we escape? The answer is only 2.
 1. Double quotes `"`
 2. Backslash itself `\`
 All other characters can be included in a string literal without escaping, regardless of their meaning outside a string.
 
 
-[Examples](./strings.lisp)
+[Strings examples](./strings.lisp)
 
 If you execute this script using the command
 
@@ -130,3 +130,33 @@ The output will be something like this:
 ```
 
 There are additional quotes in the strings. We can get rid of them if we use the `format` command instead of the `print`.
+
+Tokens like the name of a command, variable, functions are represented by objects called *symbols*. One thing to keep in mind is to not using whitespace while naming these because, the elements of lists are separated by whitespace. Standard style, these days, is to write code in all lowercase and for separation use a dash `-`.
+
+Two important constants that are defined this way are `T` and `NIL`, the canonical true and false values respectively.
+
+## Format
+
+By default `print` or `format` doesn't print a new line for that we use `~%` which is the equivalent of new line character.
+
+[Format examples](./format.lisp)
+
+The output will be:
+```
+Hello
+She replied "Yes"
+This \ is backslash
+```
+The `format` function takes two arguments
+1. Destination for its output.
+2. Control string that contains literal text and embedded directives.
+3. There can be other arguments but they wouldn't be arguments to format function rather would interpolate values into the output. Known as *format arguments*.
+
+| **First Arg** | **Means** |
+|---|---|
+| `t` | the output will be standard output i.e the console |
+| `nil` | won't print rather return a string |
+
+The second argument, the control string, is, in essence, a program in the FORMAT language. The directives that we pass to the control string may or may not need any arguments, like `~%` just emits a newline character and doesn't consume any arguments.
+
+All directives start with `~` (tilde).
