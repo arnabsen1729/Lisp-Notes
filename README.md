@@ -1,4 +1,16 @@
-# Lisp - very basic guide
+## Table of contents
+
+- [Table of contents](#table-of-contents)
+- [Setup](#setup)
+- [Understanding (+ 1 2)](#understanding--1-2)
+- [Why so weird?](#why-so-weird)
+- [Basic Syntax](#basic-syntax)
+- [Comments](#comments)
+- [Numbers](#numbers)
+- [Strings](#strings)
+- [Format](#format)
+- [Function](#function)
+- [Variables](#variables)
 
 ## Setup
 
