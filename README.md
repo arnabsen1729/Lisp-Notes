@@ -274,3 +274,43 @@ Remember, the value of the last expression inside the function is the value that
 **Q. Write a function that takes two arguments and displays the sum also returns it**
 
 Ans. In the attached code examples linked above.
+
+## Variables
+
+It is the next building block. There are two types of variables:
+1. Lexical (Local)
+2. Dynamic (Global)
+
+As we all know variables are names places that holds value. Unlike, languages like C++, Java variables are not typed, i.e they can hold any type of values.
+
+> Remember Lisp is a strongly typed language.
+
+Each time a function is called, Lisp creates new bindings to hold the arguments passed by the function's caller. A binding is the runtime manifestation of a variable.
+
+We can use the `let` to create variables (*JS vibes*). Let takes a form as the first argument, in the form each item (atom in Lisp term) is a initialisation list in itself where the first item is the symbol and the second is the object to be initialised with. It also has a body and the entire `let` returns the last evaluated expression of the body.
+
+```lisp
+(let ((x 10) (y 20) z)
+  ...)
+```
+[Variable examples](./variables.lisp)
+
+When the `let` form is evaluated, all the initial value forms are first evaluated. Then new bindings are created and initialized to the appropriate initial values before the body forms are executed. Within the body of the `let`, the variable names refer to the newly created bindings. After the `let`, the names refer to whatever, if anything, they referred to before the `let`.
+
+The **scope** of function parameters and LET variables refers to the area of the program where the variable name can be used to refer to the variable's binding. It is delimited by the form that introduces the variable.
+
+If inital value no provided it stores `NIL` by default.
+
+But if we want to specify global variables (dynamic variables) we use `defvar`.
+
+>Global variables are conventionally named with names that start and end with *
+
+```lisp
+(defvar *myvar* 0
+  "this is documentation line, 0 is the initial value here"
+)
+```
+
+If we want to update or mutate a variable we use the `setf`. `setf` takes two parameter first is the variable whose value we want to set and second is the new value.
+
+Each time a function is called, Lisp creates new bindings to hold the arguments passed by the function's caller. Remember function parameter holds object referrences.Thus, you can assign a new value to a function parameter within the body of the function, and it will not affect the bindings created for another call to the same function. But, if the object passed to a function is mutable and you change it in the function, the changes will be visible to the caller since both the caller and the callee will be referencing the same object.
