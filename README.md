@@ -160,3 +160,117 @@ The `format` function takes two arguments
 The second argument, the control string, is, in essence, a program in the FORMAT language. The directives that we pass to the control string may or may not need any arguments, like `~%` just emits a newline character and doesn't consume any arguments.
 
 All directives start with `~` (tilde).
+
+**~%**
+
+Represents new line.
+
+**~a**
+
+The most general-purpose directive is ~A, which consumes one format argument of any type and outputs it in aesthetic (human-readable) form.
+
+```lisp
+(format t "The value is: ~a ~%" 10)
+(format t "The value is: ~a ~%" "foo")
+(format t "The value is: ~a ~%" (list 1 2 3))
+```
+
+will display:
+
+```
+The value is: 10
+The value is: foo
+The value is: (1 2 3)
+```
+
+**`s**
+
+This is similar to `~a` but shows quotes around the string value.
+
+```lisp
+(format t "The value is: ~s ~%" 10)
+(format t "The value is: ~s ~%" "foo")
+(format t "The value is: ~s ~%" (list 1 2 3))
+```
+
+will display
+
+```
+The value is: 10
+The value is: "foo"
+The value is: (1 2 3)
+```
+
+**~d**
+Five closely related directives format integer values: ~d, ~x, ~o, ~b, and ~r. The most frequently used is the ~d directive, which outputs integers in base 10.
+
+If we put `:` like this `~:d` it will print commas to format the number.
+
+```lisp
+(format t "The value is: ~d ~%" 10000000)
+(format t "The value is: ~:d ~%" 10000000)
+```
+
+will display
+
+```
+The value is: 10000000
+The value is: 10,000,000
+```
+
+**~f**
+Used for floating point directive
+
+```lisp
+(format t "The value of PI is: ~f ~%" pi)
+(format t "The value of PI is: ~,4f ~%" pi)
+(format t "The value of PI is: ~e ~%" pi)
+```
+
+will display
+
+```
+The value of PI is: 3.141592653589793
+The value of PI is: 3.1416
+The value of PI is: 3.141592653589793d+0
+```
+
+## Function
+The most basic functionalities of Lisp are:
+1. Functions
+2. Variables
+3. Macros
+
+We are discussing the first one right now.
+
+To define new functions we use the `defun` name. Usually function names contain only alphabetic characters and hyphens, but other characters are allowed and are used in certain naming conventions.
+
+Basic function structure looks like this:
+
+```lisp
+(defun function-name (parameter*)
+  "Optional documentation string."
+  body-form*)
+```
+
+To call the function we write:
+
+```lisp
+(function-name argument*)
+```
+
+[Function examples](./function.lisp)
+
+Look at this function:
+
+```lisp
+(defun hello-word() (format t "Hello World ~%"))
+```
+
+Name of the function is `hello-word`, argument list is empty hence doesn't need additional parameters to call it.
+
+Remember, the value of the last expression inside the function is the value that it returns.
+
+**Q. Write a function that takes two arguments and displays the sum also returns it**
+
+Ans. In the attached code examples linked above.
