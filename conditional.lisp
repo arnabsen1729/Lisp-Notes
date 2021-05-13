@@ -1,0 +1,17 @@
+(defvar *name* 0)
+(defvar *age* 0)
+(defun eligible() (format t "~a is eligible ~%" *name*))
+(defun !eligible() (format t "~a is not eligible ~%" *name*))
+
+(defun hello ()
+(format t "Hello, what’s your first name?~%")
+(setf *name* (read))
+(format t "Your age?~%")
+(setf *age* (read))
+(format t "~a is ~d years old ~%" *name* *age*)
+(if (> *age* 17)
+  (eligible)
+  (!eligible)
+))
+
+(hello)

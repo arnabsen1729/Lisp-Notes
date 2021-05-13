@@ -11,6 +11,9 @@
 - [Format](#format)
 - [Function](#function)
 - [Variables](#variables)
+- [Constants](#constants)
+- [Arithmetic Operations](#arithmetic-operations)
+- [Conditional Operations](#conditional-operations)
 
 ## Setup
 
@@ -195,7 +198,7 @@ The value is: foo
 The value is: (1 2 3)
 ```
 
-**`s**
+**~s**
 
 This is similar to `~a` but shows quotes around the string value.
 
@@ -326,3 +329,38 @@ But if we want to specify global variables (dynamic variables) we use `defvar`.
 If we want to update or mutate a variable we use the `setf`. `setf` takes two parameter first is the variable whose value we want to set and second is the new value.
 
 Each time a function is called, Lisp creates new bindings to hold the arguments passed by the function's caller. Remember function parameter holds object referrences.Thus, you can assign a new value to a function parameter within the body of the function, and it will not affect the bindings created for another call to the same function. But, if the object passed to a function is mutable and you change it in the function, the changes will be visible to the caller since both the caller and the callee will be referencing the same object.
+
+## Constants
+
+We can even declare constant variables which we cannot mutate in future. For that we use `defconstant`
+
+## Arithmetic Operations
+
+The basic operators are +, -, *, /
+
+To get the remainder we use the `rem` or `mod` command.
+
+We also have some other commands whose functionality is evident from the names.
+Eg.
+`expt`, `sqrt`, `exp`, `log`, `floor`, `ceiling`, `max`, `min`, `oddp`, `evenp`
+
+For checking equality, we use the `eq` or `=` command. Similarly, we have the `>` `<` commands as well.
+
+[Arithmetic Examples](./arithmetic.lisp)
+
+## Conditional Operations
+
+The most basic conditional forms in Lisp is the if then, the structure of the form is like this:
+
+```
+(if condition then-form [else-form])
+```
+
+This forms returns the true value or the else value, if the else value is not provided it will simply return `nil`.
+
+**Let's quickly cover how to read data**
+There is also a `read` function which takes input from a stream we specify. So if we call the read function, it will wait for our prompt and when we press enter it will return whatever we entered.
+
+**Q. WAP to ask the name and age and check if the person is above 18**
+
+A. [Conditional Examples](./conditional.lisp)
